@@ -1,12 +1,23 @@
-import { AppAction, IncCountAction } from "../actions/AppActions"
-import { AppState } from "../states/AppState"
+import { AppAction, AddSourcePdfFileAction } from "../actions/AppActions"
+import { AppState, SourcePdfFileState, SourcePdfFileListState } from "../states/AppState"
 
 export function appStateReducer(appState: AppState, action: AppAction): AppState {
+    const sourcePdfFiles = sourcePdfFilesReducer(appState.sourcePdfFiles, action);
+
+    return Object.assign({}, appState, {
+        sourcePdfFiles
+    })
+}
+
+function sourcePdfFilesReducer(sourcePdfFiles: SourcePdfFileListState, action: AppAction): SourcePdfFileListState {
     switch (action.type) {
-        case "INC_COUNT": {
-            const { by } = action as IncCountAction
-            const { count } = appState
-            const nextState = Object.assign({}, appState, { count: count + by })
+        case "ADD_SOURCE_PDF_FILE": {
+            const { key, file } = action as AddSourcePdfFileAction
+            const sourcePdfFileState: SourcePdfFileState = {
+                file,
+                status: "Pending"
+            }
+            const nextState = Object.assign({}, sourcePdfFiles, { [key]: sourcePdfFileState })
             return nextState
         }
     }

@@ -1,15 +1,15 @@
 export type AppActionType
-    = "INC_COUNT"
+    = "ADD_SOURCE_PDF_FILE"
 
 export interface AppAction {
     type: AppActionType
 }
 
-export interface IncCountAction extends AppAction {
-    by: number
-    ac : string
+export interface AddSourcePdfFileAction extends AppAction {
+    key: string
+    file: File
 }
 
-export function makeIncCountAction(by: number): IncCountAction {
-    return { type: "INC_COUNT", by, ac: "" }
+export function makeAddSourcePdfFileAction(key: string, file: File): AddSourcePdfFileAction {
+    return { type: "ADD_SOURCE_PDF_FILE", key, file }
 }

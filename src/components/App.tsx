@@ -1,17 +1,18 @@
 import React from "react"
 import "./App.css"
-import { useCount } from "../states/AppStateHooks"
-import { useDispatchIncCount } from "../dispatchs/DispatchHooks"
+import { SourcePdfFileSelector } from "./SourcePdfFileSelector"
+import { AppStateContext } from "../context/AppContext"
+import { SourcePdfFileList } from "./SourcePdfFileList"
 
 export const App: React.FC = () => {
-    const count = useCount()
-    const dispatchIncCount = useDispatchIncCount()
+    // For debugging
+    const appStateContext = React.useContext(AppStateContext);
+    (window as any).__DBG__APP_STATE__ = appStateContext
 
     return (
-        <div className="card">
-            <button onClick={() => dispatchIncCount(5)}>
-                count is {count}
-            </button>
+        <div>
+            <SourcePdfFileSelector />
+            <SourcePdfFileList />
         </div>
     )
 }

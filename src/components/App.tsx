@@ -3,6 +3,8 @@ import "./App.css"
 import { SourcePdfFileSelector } from "./SourcePdfFileSelector"
 import { AppStateContext } from "../context/AppContext"
 import { SourcePdfFileList } from "./SourcePdfFileList"
+import { RunButton } from "./RunButton"
+import { ResetButton } from "./ResetButton"
 
 export const App: React.FC = () => {
     // For debugging
@@ -13,6 +15,8 @@ export const App: React.FC = () => {
         <div>
             <SourcePdfFileSelector />
             <SourcePdfFileList />
+            <RunButton />
+            <ResetButton />
         </div>
     )
 }

@@ -5,12 +5,13 @@ export interface AppState {
 export type SourcePdfFileStatus = "Pending" | "Processing" | "Done" | "Error"
 
 export interface SourcePdfFileListState {
-    [key: string]: SourcePdfFileState
+    [fileKey: string]: SourcePdfFileState
 }
 
 export interface SourcePdfFileState {
     file: File
     status: SourcePdfFileStatus
+    progress: string
 }
 
 export const defaultAppState: AppState = {

@@ -1,13 +1,13 @@
 import React from "react"
 import { useIsAllPending, useSourcePdfFiles } from "../states/AppStateHooks"
 import { SourcePdfFileState } from "../states/AppState"
-import { dispatchDeleteSourcePdfFileAction } from "../actions/AppActions";
+import { dispatchDeleteSourcePdfFileAction } from "../actions/AppActions"
 
 export const SourcePdfFileList: React.FC = () => {
-    const sourcePdfFiles = useSourcePdfFiles();
+    const sourcePdfFiles = useSourcePdfFiles()
 
     return (
-        <div>
+        <div data-testid="source-pdf-file-list">
             {Object.keys(sourcePdfFiles).map(fileKey => {
                 return <FileItemPart key={fileKey} fileKey={fileKey} sourcePdfFileState={sourcePdfFiles[fileKey]} />
             })}
@@ -19,11 +19,11 @@ const FileItemPart: React.FC<{
     fileKey: string
     sourcePdfFileState: SourcePdfFileState
 }> = ({ fileKey, sourcePdfFileState }) => {
-    const { file, status, progress } = sourcePdfFileState;
-    const { name, lastModified, size } = file;
+    const { file, status, progress } = sourcePdfFileState
+    const { name, lastModified, size } = file
     const lastModifiedDate = new Date(lastModified)
 
-    const isAllPending = useIsAllPending();
+    const isAllPending = useIsAllPending()
 
     const handleDeleteButtonClick = React.useCallback(() => {
         dispatchDeleteSourcePdfFileAction({ fileKey })

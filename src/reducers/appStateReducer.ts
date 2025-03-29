@@ -2,7 +2,7 @@ import { AppAction, AddSourcePdfFileActionArgs, DeleteSourcePdfFileActionArgs, S
 import { AppState, SourcePdfFileState, SourcePdfFileListState } from "../states/AppState"
 
 export function appStateReducer(appState: AppState, action: AppAction): AppState {
-    const sourcePdfFiles = sourcePdfFilesReducer(appState.sourcePdfFiles, action);
+    const sourcePdfFiles = sourcePdfFilesReducer(appState.sourcePdfFiles, action)
 
     return Object.assign({}, appState, {
         sourcePdfFiles

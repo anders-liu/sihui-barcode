@@ -5,6 +5,7 @@ import { AppStateContext } from "../context/AppContext"
 import { SourcePdfFileList } from "./SourcePdfFileList"
 import { RunButton } from "./RunButton"
 import { ResetButton } from "./ResetButton"
+import { PdfPageCanvas } from "./PdfPageCanvas"
 
 export const App: React.FC = () => {
     // For debugging
@@ -12,11 +13,12 @@ export const App: React.FC = () => {
     (window as any).__DBG__APP_STATE__ = appStateContext
 
     return (
-        <div>
+        <div data-testid="app">
             <SourcePdfFileSelector />
             <SourcePdfFileList />
             <RunButton />
             <ResetButton />
+            <PdfPageCanvas />
         </div>
     )
 }

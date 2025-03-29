@@ -8,16 +8,16 @@ export const SourcePdfFileSelector: React.FC = () => {
     const notStarted = useIsAllPending(/*includeEmpty*/true)
 
     const handlFileInputChange = React.useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        const files = e.currentTarget.files ?? [];
+        const files = e.currentTarget.files ?? []
         for (const file of files) {
             const fileKey = makeFileKey(file)
             dispatchAddSourcePdfFileAction({ fileKey, file })
         }
         e.currentTarget.value = ""
-    }, []);
+    }, [])
 
     return notStarted && (
-        <div>
+        <div data-testid="source-pdf-file-selector">
             <input id="select-pdf-files" ref={fileInputRef} type="file" multiple accept=".pdf" onChange={handlFileInputChange} />
         </div>
     )
